@@ -48,8 +48,19 @@ public class Film {
     private Set<Category> catergory=new HashSet<>();
 	*/
 	
-	@OneToMany(mappedBy = "film")
+	@OneToMany(mappedBy = "filmRefCat")
     Set<CategoFilm> categoFilm;
+	
+	@OneToMany(mappedBy = "filmRefAct")
+    Set<ActFilm> actFilm;
+	
+	@OneToMany(mappedBy = "filmRefUserInfoRefFav")
+    Set<favourite> fav;
+    
+	@OneToMany(mappedBy = "filmRefUserInfoRefFB")
+    Set<feedBack> fb;
+	
+	
 	
 	
 }

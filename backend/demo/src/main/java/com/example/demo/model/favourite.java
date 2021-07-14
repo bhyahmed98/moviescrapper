@@ -7,22 +7,23 @@ import javax.persistence.ManyToOne;
 import javax.persistence.MapsId;
 
 @Entity
-public class CategoFilm {
+public class favourite {
 
 	
 	@EmbeddedId
-	CategoFilmKey id;
+	favouriteKey id;
 
     @ManyToOne
     @MapsId("filmId")
     @JoinColumn(name = "film_id")
-    Film filmRefCat;
+    Film filmRefUserInfoRefFav;
 
     @ManyToOne
-    @MapsId("categoryId")
-    @JoinColumn(name = "category_id")
-    Category category;
+    @MapsId("userInfoId")
+    @JoinColumn(name = "userInfo_id")
+    UserInfo userInfoRefFilmRefFav;
 
-    int rating;
+    //int rating;
 
 }
+
