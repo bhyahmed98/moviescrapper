@@ -40,27 +40,22 @@ public class Film {
 	private int idCategory;
 	private int year;
 	private String language;
-	private int numRate;
-	private int curRate;
 
 	/*
-    @ManyToMany(mappedBy = "CategoFilm")
-    private Set<Category> catergory=new HashSet<>();
-	*/
-	
+	 * @ManyToMany(mappedBy = "CategoFilm") private Set<Category> catergory=new
+	 * HashSet<>();
+	 */
+
 	@OneToMany(mappedBy = "filmRefCat")
-    Set<CategoFilm> categoFilm;
-	
+	Set<CategoFilm> categoFilm;
+
 	@OneToMany(mappedBy = "filmRefAct")
-    Set<ActFilm> actFilm;
-	
+	Set<ActFilm> actFilm;
+
 	@OneToMany(mappedBy = "filmRefUserInfoRefFav")
-    Set<favourite> fav;
-    
+	Set<favourite> fav;
+
 	@OneToMany(mappedBy = "filmRefUserInfoRefFB")
-    Set<feedBack> fb;
-	
-	
-	
-	
+	Set<feedBack> fb;
+
 }

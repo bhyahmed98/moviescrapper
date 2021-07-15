@@ -27,7 +27,7 @@ import lombok.Data;
 @Data
 @EntityListeners(AuditingEntityListener.class)
 @Entity
-@Table(name = "user")
+@Table(name = "userInfo")
 public class UserInfo {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_seq")
@@ -37,14 +37,11 @@ public class UserInfo {
 	private String email;
 	private String password;
 	private String phonenumber;
-	
+
 	@OneToMany(mappedBy = "userInfoRefFilmRefFav")
-    Set<favourite> fav;
-    
-    
+	Set<favourite> fav;
+
 	@OneToMany(mappedBy = "userInfoRefFilmRefFB")
-    Set<feedBack> fb;
-	
-	// this.urlimage = urlimage;
+	Set<feedBack> fb;
 
 }
