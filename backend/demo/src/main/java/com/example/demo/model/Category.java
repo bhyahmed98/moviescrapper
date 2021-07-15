@@ -28,11 +28,10 @@ import lombok.Data;
 @Table(name = "category")
 public class Category {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO, generator = "category_seq")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "category_seq")
 	@SequenceGenerator(name = "category_seq", sequenceName = "category_seq")
 	private long idCategory;
 	private String title;
 	
-	// this.urlimage = urlimage;
 
 }
