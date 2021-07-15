@@ -35,8 +35,7 @@ public class Film {
 	private int idCategory;
 	private int year;
 	private String language;
-	private int numberRate;
-	private int currentRate;
+
 
 	
 
