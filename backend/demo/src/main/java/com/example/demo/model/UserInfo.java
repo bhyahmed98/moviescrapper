@@ -28,7 +28,7 @@ import lombok.Data;
 @Table(name = "user")
 public class UserInfo {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO, generator = "user_seq")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_seq")
 	@SequenceGenerator(name = "user_seq", sequenceName = "user_seq")
 	private long idUser;
 	private String name;
