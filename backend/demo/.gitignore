@@ -44,4 +44,6 @@ local.properties
 .settings/
 .loadpath
 .recommenders
+
 backend/demo/src/main/resources/application.properties
+
