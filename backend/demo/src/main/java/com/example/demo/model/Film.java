@@ -1,12 +1,14 @@
 package com.example.demo.model;
 
-import java.util.Date;
 
+import java.util.Set;
+import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
@@ -19,6 +21,7 @@ import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import static javax.persistence.TemporalType.TIMESTAMP;
+
 
 import lombok.Data;
 
@@ -37,6 +40,16 @@ public class Film {
 	private String language;
 
 
-	
+	@OneToMany(mappedBy = "filmRefCat")
+	Set<CategoFilm> categoFilm;
+
+	@OneToMany(mappedBy = "filmRefAct")
+	Set<ActFilm> actFilm;
+
+	@OneToMany(mappedBy = "filmRefUserInfoRefFav")
+	Set<favourite> fav;
+
+	@OneToMany(mappedBy = "filmRefUserInfoRefFB")
+	Set<feedBack> fb;
 
 }
