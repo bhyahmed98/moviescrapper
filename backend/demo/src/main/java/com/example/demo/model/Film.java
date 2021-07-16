@@ -29,10 +29,6 @@ public class Film {
 	private int year;
 	private String language;
 
-	/*
-	 * @ManyToMany(mappedBy = "CategoFilm") private Set<Category> catergory=new
-	 * HashSet<>();
-	 */
 
 	@OneToMany(mappedBy = "filmRefCat")
 	Set<CategoFilm> categoFilm;

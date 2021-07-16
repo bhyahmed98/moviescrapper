@@ -23,7 +23,6 @@ public class favourite {
     @JoinColumn(name = "userInfo_id")
     UserInfo userInfoRefFilmRefFav;
 
-    //int rating;
 
 }
 

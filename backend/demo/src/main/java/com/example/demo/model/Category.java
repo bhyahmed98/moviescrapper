@@ -25,16 +25,6 @@ public class Category {
 	private long idCategory;
 	private String title;
 	
-	/*
-	@ManyToMany
-	@JoinTable(name = "CategoFilm",
-			joinColumns= @JoinColumn(name="idCategory"),
-			inverseJoinColumns = @JoinColumn(name = "idFilm"))
-
-
-	private Set<Film> films= new HashSet<>();
-	*/
-	
 	
 	@OneToMany(mappedBy = "category")
     Set<CategoFilm> categofilm;
