@@ -35,7 +35,6 @@ public class Actor {
 	private long idActor;
 	private String nameActor;
 	
-	// this.urlimage = urlimage;
 	
 	@OneToMany(mappedBy = "actRefFilm")
     Set<ActFilm> actFilm;

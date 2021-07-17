@@ -23,10 +23,13 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import static javax.persistence.TemporalType.TIMESTAMP;
 
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 @Data
 @Entity
 @Table(name = "userInfo")
+
 public class UserInfo {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_seq")
@@ -43,7 +46,10 @@ public class UserInfo {
     
 	@OneToMany(mappedBy = "userInfoRefFilmRefFB")
     Set<feedBack> fb;
+    
+    
+    
 	
-	// this.urlimage = urlimage;
+
 
 }

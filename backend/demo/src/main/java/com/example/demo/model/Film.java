@@ -30,6 +30,7 @@ import lombok.Data;
 @Data
 @EntityListeners(AuditingEntityListener.class)
 @Entity
+@Getter @Setter ;
 @Table(name = "Film")
 public class Film {
 	@Id
@@ -43,10 +44,7 @@ public class Film {
 	private int numRate;
 	private int curRate;
 
-	/*
-    @ManyToMany(mappedBy = "CategoFilm")
-    private Set<Category> catergory=new HashSet<>();
-	*/
+	
 	
 	@OneToMany(mappedBy = "filmRefCat")
     Set<CategoFilm> categoFilm;

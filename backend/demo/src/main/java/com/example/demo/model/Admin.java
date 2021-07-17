@@ -28,8 +28,6 @@ public class Admin {
 	private String email;
 	private String password;
 	
-		// this.prix = prix;
-	// this.prixT = prixT;
-	// this.urlimage = urlimage;
+
 
 }

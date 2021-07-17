@@ -23,7 +23,6 @@ public class ActFilm {
     @JoinColumn(name = "actor_id")
     Actor actRefFilm;
 
-    //int rating;
 
 }
 

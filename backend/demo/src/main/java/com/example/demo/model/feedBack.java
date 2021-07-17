@@ -23,9 +23,7 @@ public class feedBack {
     @JoinColumn(name = "userInfo_id")
     UserInfo userInfoRefFilmRefFB;
     
-    
 
-    //int rating;
 
 }
 
