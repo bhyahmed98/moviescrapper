@@ -15,11 +15,11 @@ public class ActorService {
 	@Autowired
 	private ActorRepository actorRepository;
 	
-	public List<Actor> getallActor () {
+	public List<Actor> getall () {
 		return actorRepository.findAll() ; 
 	}
 	
-	public Optional<Actor>  getActor (long id){
+	public Optional<Actor>  get (long id){
 		return actorRepository.findById(id) ; 
 	}
 	
@@ -27,7 +27,7 @@ public class ActorService {
     	actorRepository.deleteById(id);
     }
     
-	public Actor AddActor(Actor actor) {
+	public Actor Add(Actor actor) {
 		return actorRepository.save(actor) ; 
 		
 	}

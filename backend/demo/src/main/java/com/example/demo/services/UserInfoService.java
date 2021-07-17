@@ -1,6 +1,5 @@
 package com.example.demo.services;
 
-
 import java.util.List;  
 import org.springframework.beans.factory.annotation.Autowired;  
 import org.springframework.stereotype.Service;
@@ -20,7 +19,6 @@ public class UserInfoService {
 		return userRepository.findAll();
 		
 	}
-	
 	public UserInfo getUserById( Long id )
 	{	return userRepository.findById(id).get()
 		;}
@@ -30,8 +28,8 @@ public class UserInfoService {
 		;}
 	public void deleteUser(Long UserId)
 	{	userRepository.deleteById(UserId)
-		;}
-
-
-	
+		;}	
 ;}
+
+}
+

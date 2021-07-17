@@ -16,11 +16,11 @@ public class FilmService {
  	@Autowired
 	private FilmRepository filmRepository;
 	
-	public List<Film> getallFilm () {
+	public List<Film> getall () {
 		return filmRepository.findAll() ; 
 	}
 	
-	public Optional<Film>  getFilm (long id){
+	public Optional<Film>  get (long id){
 		return filmRepository.findById(id) ; 
 	}
 	
@@ -28,7 +28,7 @@ public class FilmService {
     	filmRepository.deleteById(id);
     }
     
-	public Film AddFilm(Film film) {
+	public Film Add(Film film) {
 		return filmRepository.save(film) ; 
 	}
 	

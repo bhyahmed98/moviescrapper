@@ -34,19 +34,19 @@ public class ActorController {
 	@Autowired
     ActorService actorService;
 	    
-    @PostMapping("/addActor")
-    public Actor saveAroduct(@RequestBody Actor actor) {
-		return actorService.AddActor(actor) ; 
+    @PostMapping("/add")
+    public Actor saveActor(@RequestBody Actor actor) {
+		return actorService.Add(actor) ; 
 	}
         
 	@GetMapping("/getall")
 	public List<Actor> getAllActor(){
-		return actorService.getallActor() ; 
+		return actorService.getall() ; 
 	}
 	
 	@GetMapping("/get/{id}")
 	public Optional<Actor> getActor(@PathVariable("id") long id){
-		return actorService.getActor(id);
+		return actorService.get(id);
 	}
 	
 	@DeleteMapping("delete/{id}")
