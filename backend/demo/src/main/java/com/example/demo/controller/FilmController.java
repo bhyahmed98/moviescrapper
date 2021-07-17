@@ -31,23 +31,23 @@ public class FilmController {
     FilmService filmService;
 	
    
-    @PostMapping("/addFilm")
+    @PostMapping("/add")
     public Film saveAroduct(@RequestBody Film film) {
-		return filmService.AddFilm(film) ; 
+		return filmService.Add(film) ; 
 	}
         
 	@GetMapping("/getall")
 	public List<Film> getAllFilm(){
-		return filmService.getallFilm() ; 
+		return filmService.getall() ; 
 	}
 	
 	@GetMapping("/get/{id}")
 	public Optional<Film> getFilm(@PathVariable("id") long id){
-		return filmService.getFilm(id);
+		return filmService.get(id);
 	}
 	
-	@DeleteMapping("delete/{id}")
-	public void deleteFilm(@PathVariable("id") long id) {
+	@DeleteMapping("/delete/{id}")
+	public void delete(@PathVariable("id") long id) {
 		filmService.delete(id);
 	}
 	
