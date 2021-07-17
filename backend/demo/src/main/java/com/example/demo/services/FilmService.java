@@ -10,7 +10,9 @@ import com.example.demo.repository.FilmRepository;
 
 @Service
 public class FilmService {
-	@Autowired
+
+ 	
+ 	@Autowired
 	private FilmRepository filmRepository;
 	
 	public List<Film> getallFilm () {
@@ -28,9 +30,6 @@ public class FilmService {
 	public Film AddFilm(Film film) {
 		return filmRepository.save(film) ; 
 	}
-	
-
-	
 	
 	
 

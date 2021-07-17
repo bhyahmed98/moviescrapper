@@ -25,14 +25,13 @@ import static javax.persistence.TemporalType.TIMESTAMP;
 import lombok.Data;
 
 @Data
-@EntityListeners(AuditingEntityListener.class)
 @Entity
-@Table(name = "user")
+@Table(name = "userInfo")
 public class UserInfo {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_seq")
 	@SequenceGenerator(name = "user_seq", sequenceName = "user_seq")
-	private long idUser;
+	private long Id;
 	private String name;
 	private String email;
 	private String password;

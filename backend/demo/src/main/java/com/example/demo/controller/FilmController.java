@@ -1,13 +1,18 @@
 package com.example.demo.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.model.Actor;
 import com.example.demo.model.Film;
@@ -16,33 +21,36 @@ import com.example.demo.services.FilmService;
 
 import lombok.RequiredArgsConstructor;
 
-@Controller
-@RequestMapping("")
+@RestController
+@RequestMapping("film")
 @RequiredArgsConstructor
+
 public class FilmController {
-    @Autowired
+  
+ 	@Autowired
     FilmService filmService;
 	
-    
-    @GetMapping("/addFilm")
-	public String Addproduct(Model model) {
-        Film f = new Film();
-        model.addAttribute("film", f);
-        return "addfilm";
-    }
-    
-	@GetMapping("/deleteFilm/{id}")
-    public String deleteFilm(@PathVariable("id") long id, Model model) {
-
-        filmService.delete(id);
-        return "redirect:/film";
-    }
-	
+   
+    @PostMapping("/addFilm")
+    public Film saveAroduct(@RequestBody Film film) {
+		return filmService.AddFilm(film) ; 
+	}
+        
 	@GetMapping("/getall")
 	public List<Film> getAllFilm(){
 		return filmService.getallFilm() ; 
 	}
 	
+	@GetMapping("/get/{id}")
+	public Optional<Film> getFilm(@PathVariable("id") long id){
+		return filmService.getFilm(id);
+	}
+	
+	@DeleteMapping("delete/{id}")
+	public void deleteFilm(@PathVariable("id") long id) {
+		filmService.delete(id);
+	}
 	
 
+	
 }
