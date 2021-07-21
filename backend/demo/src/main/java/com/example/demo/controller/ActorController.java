@@ -34,7 +34,7 @@ public class ActorController {
 	@Autowired
     ActorService actorService;
 	    
-    @PostMapping("/add")
+	@PostMapping("/add")
     public Actor saveActor(@RequestBody Actor actor) {
 		return actorService.Add(actor) ; 
 	}

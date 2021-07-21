@@ -11,25 +11,22 @@ public class CategoryService {
 	@Autowired
 	private CategoryRepository categoryRepository;
 
-	public List<Category> getAllCategory()
-	{
+	public List<Category> getAllCategory() {
 		return categoryRepository.findAll();
-		
+
 	}
-	
-	public Category getCategoryById( Long id )
-	{	return categoryRepository.findById(id).get()
-		;}
-	
-	public void addCategory(Category category)
-	{	categoryRepository.save(category)
-		;}
-	public void deleteCategory(Long Id)
-	{	categoryRepository.deleteById(Id)
-	;}
-	
-	;}
 
-	
+	public Category getCategoryById(Long id) {
+		return categoryRepository.findById(id).get();
+	}
 
+	public void addCategory(Category category) {
+		categoryRepository.save(category);
+	}
 
+	public void deleteCategory(Long Id) {
+		categoryRepository.deleteById(Id);
+	}
+
+	;
+}

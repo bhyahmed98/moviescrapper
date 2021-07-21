@@ -1,6 +1,5 @@
 package com.example.demo.controller;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List; 
+import java.util.List;
 import com.example.demo.model.UserInfo;
 import com.example.demo.services.UserInfoService;
 import lombok.RequiredArgsConstructor;
@@ -23,26 +22,25 @@ import lombok.RequiredArgsConstructor;
 public class UserInfoController {
 	@Autowired
 	UserInfoService userService;
-	
-	@GetMapping("/user")
-	private List<UserInfo> getAllUserInfo()
-	
-	{	return userService.getAllUserInfo();
-		}
-	
-	@GetMapping("/user/{userid}")
-	private UserInfo getUser(@PathVariable("userid)") Long userid)
-	{
+
+	@GetMapping("/getall")
+	private List<UserInfo> getAllUserInfo() {
+		return userService.getAllUserInfo();
+	}
+
+	@GetMapping("/get/{id}")
+	private UserInfo getUser(@PathVariable("id)") Long userid) {
 		return userService.getUserById(userid);
 	}
-	@DeleteMapping("/user/{userid}")
-	private void deleteUser(@PathVariable("userid") Long userid)
-	{	userService.deleteUser(userid)
-		;}
-	@PostMapping("/user")
-	private void addUser(@RequestBody UserInfo user)
-	{	userService.addUser(user)
-		;}
 
+	@DeleteMapping("/delete/{id}")
+	private void deleteUser(@PathVariable("id") Long userid) {
+		userService.deleteUser(userid);
+	}
+
+	@PostMapping("/add")
+	private void addUser(@RequestBody UserInfo user) {
+		userService.addUser(user);
+	}
 
 }

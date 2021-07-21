@@ -14,34 +14,33 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.demo.model.Admin;
 import com.example.demo.services.AdminService;
 
-
 @RestController
 @RequestMapping("/admin")
 public class AdminController {
-	
-	
-	
+
 	@Autowired
 	AdminService adminService;
-	
-	@GetMapping("/admin")
+
+	@GetMapping("/getall")
 	private List<Admin> getAdmin()
-	
-	{	return adminService.getAllAdmin();
-		}
-	
-	@GetMapping("/admin/{adminid}")
-	private Admin getAdmin(@PathVariable("adminid)") Long id)
+
 	{
+		return adminService.getAllAdmin();
+	}
+
+	@GetMapping("/get/{id}")
+	private Admin getAdmin(@PathVariable("id)") Long id) {
 		return adminService.getAdminById(id);
 	}
-	@DeleteMapping("/admin/{adminid}")
-	private void deleteAdmin(@PathVariable("adminid") Long id)
-	{	adminService.deleteAdmin(id)
-		;}
-	@PostMapping("/admin")
-	private void addAdmin(@RequestBody Admin admin)
-	{	adminService.addAdmin(admin)
-		;}
+
+	@DeleteMapping("delete/{id}")
+	private void deleteAdmin(@PathVariable("id") Long id) {
+		adminService.deleteAdmin(id);
+	}
+
+	@PostMapping("/add")
+	private void addAdmin(@RequestBody Admin admin) {
+		adminService.addAdmin(admin);
+	}
 
 }

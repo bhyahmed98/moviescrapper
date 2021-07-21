@@ -20,28 +20,25 @@ public class CategoryController {
 
 	@Autowired
 	CategoryService categoryService;
-	
-	@GetMapping("/category")
-	private List<Category> getCategory()
-	
-	{	return categoryService.getAllCategory();
-		}
-	
-	@GetMapping("/category/{categoryid}")
-	private Category getCategory(@PathVariable("categoryid)") Long id)
-	{
+
+	@GetMapping("/getall")
+	private List<Category> getCategory() {
+		return categoryService.getAllCategory();
+	}
+
+	@GetMapping("/get/{id}")
+	private Category getCategory(@PathVariable("id)") Long id) {
 		return categoryService.getCategoryById(id);
 	}
-	@DeleteMapping("/category/{categoryid}")
-	private void deleteCategory(@PathVariable("id") Long id)
-	{	categoryService.deleteCategory(id)
-		;}
-	@PostMapping("/category")
-	private void addCategory(@RequestBody Category category)
-	{	categoryService.addCategory(category)
-		;}
 
+	@DeleteMapping("delete/{id}")
+	private void deleteCategory(@PathVariable("id") Long id) {
+		categoryService.deleteCategory(id);
+	}
+
+	@PostMapping("/add")
+	private void addCategory(@RequestBody Category category) {
+		categoryService.addCategory(category);
+	}
 
 }
-
-
