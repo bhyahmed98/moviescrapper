@@ -22,8 +22,5 @@ public class feedBack {
     @MapsId("userInfoId")
     @JoinColumn(name = "userInfo_id")
     UserInfo userInfoRefFilmRefFB;
-    
-
-
 }
 
