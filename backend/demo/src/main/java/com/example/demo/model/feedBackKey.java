@@ -15,5 +15,4 @@ class feedBackKey implements Serializable {
 		   @Column(name = "userInfo_id")
 		   Long userInfoId;
 
-
 }
