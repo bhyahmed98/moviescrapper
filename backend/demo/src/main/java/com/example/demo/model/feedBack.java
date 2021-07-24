@@ -13,14 +13,14 @@ public class feedBack {
 	@EmbeddedId
 	feedBackKey id;
 
-	@ManyToOne
-	@MapsId("filmId")
-	@JoinColumn(name = "film_id")
-	Film filmRefUserInfoRefFB;
+    @ManyToOne
+    @MapsId("filmId")
+    @JoinColumn(name = "film_id")
+    Film filmRefUserInfoRefFB;
 
-	@ManyToOne
-	@MapsId("userInfoId")
-	@JoinColumn(name = "userInfo_id")
-	UserInfo userInfoRefFilmRefFB;
+    @ManyToOne
+    @MapsId("userInfoId")
+    @JoinColumn(name = "userInfo_id")
+    UserInfo userInfoRefFilmRefFB;
 
 }

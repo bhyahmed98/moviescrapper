@@ -11,6 +11,7 @@ class feedBackKey implements Serializable {
 	@Column(name = "film_id")
 	Long filmId;
 
+
 	@Column(name = "userInfo_id")
 	Long userInfoId;
 
