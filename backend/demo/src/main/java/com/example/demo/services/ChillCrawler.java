@@ -12,6 +12,7 @@ import org.jsoup.nodes.Element;
 public class ChillCrawler {
 
 	private static ArrayList<String> url_list =new ArrayList<String>();
+	private static WebScrap webscrap = new WebScrap();
 
 	
 	public static void main(String[] args) {
@@ -47,10 +48,10 @@ public class ChillCrawler {
 			Document doc = con.get();
 			if (con.response().statusCode() == 200) {
 				if (test_url(url)) {
-					//System.out.println("Link " + url);
+					System.out.println("Link " + url);
 					String name=url.substring(20,url.length()-1).replace("-", " ");
 					System.out.println(name);
-					url_list.add(url);
+					webscrap.scrap(name,url);
 					
 				}
 				return doc;
