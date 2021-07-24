@@ -9,20 +9,19 @@ import javax.persistence.MapsId;
 @Entity
 public class CategoFilm {
 
-	
 	@EmbeddedId
 	CategoFilmKey id;
 
-    @ManyToOne
-    @MapsId("filmId")
-    @JoinColumn(name = "film_id")
-    Film filmRefCat;
+	@ManyToOne
+	@MapsId("filmId")
+	@JoinColumn(name = "film_id")
+	Film filmRefCat;
 
-    @ManyToOne
-    @MapsId("categoryId")
-    @JoinColumn(name = "category_id")
-    Category category;
+	@ManyToOne
+	@MapsId("categoryId")
+	@JoinColumn(name = "category_id")
+	Category category;
 
-    int rating;
+	int rating;
 
 }

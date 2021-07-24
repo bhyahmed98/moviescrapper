@@ -1,7 +1,5 @@
 package com.example.demo.model;
 
-
-
 import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
 import javax.persistence.GeneratedValue;
@@ -12,7 +10,6 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
-
 
 import lombok.Data;
 
@@ -27,7 +24,5 @@ public class Admin {
 	private long idAdmin;
 	private String email;
 	private String password;
-	
-
 
 }

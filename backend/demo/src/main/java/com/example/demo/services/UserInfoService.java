@@ -29,5 +29,5 @@ public class UserInfoService {
 
 	public void deleteUser(Long UserId) {
 		userRepository.deleteById(UserId);
-	};
+	}
 }
