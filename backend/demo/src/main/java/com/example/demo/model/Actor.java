@@ -27,5 +27,27 @@ public class Actor {
 
 	@OneToMany(mappedBy = "actRefFilm")
     Set<ActFilm> actFilm;
+	
+	public Actor(long id,String name) 
+	{
+		this.idActor=id;
+		this.nameActor=name;
+	}
+
+	public long getIdActor() {
+		return idActor;
+	}
+
+	public void setIdActor(long idActor) {
+		this.idActor = idActor;
+	}
+
+	public String getNameActor() {
+		return nameActor;
+	}
+
+	public void setNameActor(String nameActor) {
+		this.nameActor = nameActor;
+	}
 
 }

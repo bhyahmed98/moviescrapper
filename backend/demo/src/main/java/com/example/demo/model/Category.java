@@ -25,5 +25,27 @@ public class Category {
 
 	@OneToMany(mappedBy = "category")
 	Set<CategoFilm> categofilm;
+    
+	public Category(long id,String ti) 
+	{
+		this.idCategory=id;
+		this.title=ti;
+	}
 
+	public long getIdCategory() {
+		return idCategory;
+	}
+
+	public void setIdCategory(long idCategory) {
+		this.idCategory = idCategory;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+	
 }

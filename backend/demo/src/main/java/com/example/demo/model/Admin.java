@@ -24,5 +24,37 @@ public class Admin {
 	private long idAdmin;
 	private String email;
 	private String password;
+	
+	public Admin(long id,String em,String pass) 
+	{
+		this.idAdmin=id;
+		this.email=em;
+		this.password=pass;
+	}
+
+	public long getIdAdmin() {
+		return idAdmin;
+	}
+
+	public void setIdAdmin(long idAdmin) {
+		this.idAdmin = idAdmin;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	
 
 }
