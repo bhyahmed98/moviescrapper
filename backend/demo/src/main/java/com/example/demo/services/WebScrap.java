@@ -5,95 +5,107 @@ import java.util.ArrayList;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
 
 public class WebScrap {
+	private static String[] category;
+	private static String director;
+	private static ArrayList<String> actors = new ArrayList<String>();
+	private static ArrayList<String> languages = new ArrayList<String>();
 
-	// private static String Annees="";
-	// private static String Annees="";
+	private static String imdbRating;
 
 	public static void main(String[] args) {
-		scrap("the prison","");
+		ScrapeImdb("https://www.imdb.com/title/tt3554046/?ref_=adv_li_tt", "");
+
 	}
 
-	final String url = "https://www.rottentomatoes.com/m/the_prison";
-
-	// System.out.println(url.substring(33,url.length()-1).replace("-", " "));
-
-	final static void scrap(String name, String url2) {
-		
-		String url = "https://www.rottentomatoes.com/m/"+name.replace(" ", "_");
-		System.out.println(url);
-		
+	public static void ScrapeImdb(String movieurl, String url) {
 		try {
-			final Document doc = Jsoup.connect(url).get();
+			languages = new ArrayList<String>();
+			final Document doc = Jsoup.connect(movieurl).get();
 			if (doc != null) {
-				String Rating = "", Langues = "", Director = "", Date = "", Runtime = "", Realisateur = "";
-				String[] Category, Producer, Writer, Production_co;
+				String s = doc.select("li.ipc-inline-list__item").text();
+				boolean t = false;
+				try {
+					t = s.substring(0, Math.min(s.length() - 1, s.indexOf("Cast"))).contains("min");
 
-				for (Element e : doc.select("li")) {
-					if ((e.text().contains("Rating:")) && (e.text().contains(" Rating: ") == false))
-						System.out.println(e.text());
-					if (e.text().contains("Genre:"))
-						System.out.println(e.text());
-					if (e.text().contains("Original Language:"))
-						System.out.println(e.text());
-					if (e.text().contains("Director:"))
-						System.out.println(e.text());
-					if (e.text().contains("Producer:"))
-						System.out.println(e.text());
-					if (e.text().contains("Writer:"))
-						System.out.println(e.text());
-					if (e.text().contains("Release Date (Theaters):"))
-						System.out.println(e.text());
-					if (e.text().contains("Runtime:"))
-						System.out.println(e.text());
-					if (e.text().contains("Production Co:"))
-						System.out.println(e.text());
-					
-					/*
-					 * if (e.text().contains("Années")) Annee =
-					 * e.text().substring("Années:".length()).trim(); if
-					 * (e.text().contains("Langues")) Langues =
-					 * e.text().substring("Langues:".length()).trim(); if
-					 * (e.text().contains("Qualités")) SD =
-					 * e.text().substring("Qualités:".length()).trim(); if
-					 * (e.text().contains("Pays:")) Pays =
-					 * e.text().substring("Pays:".length()).trim(); if (e.text().contains("Genre"))
-					 * Genre = e.text().substring("Genre:".length()).trim(); if
-					 * (e.text().contains("Acteurs")) acteurs =
-					 * e.text().substring("Acteurs:".length()).split(","); if
-					 * (e.text().contains("Realisateur")) Realisateur =
-					 * e.text().substring("Realisateur:".length()).trim();
-					 * 
-					 */
-
-				
+				} catch (Exception e) {
+					return;
 				}
-				
-
-				System.out.println("Actors:");
-				for (Element e : doc.select("div.media-body")) {
-					String[] l = e.text().split(" ");
-					if (l.length <= 5)
-						System.out.println(l[0] + " " + l[1]);
+				if (!t) {
+					return;
 				}
-				
 
-				/*
-				 * System.out.println(Annee); System.out.println(Langues);
-				 * System.out.println(SD); System.out.println(Pays); System.out.println(Genre);
-				 * System.out.println(Realisateur);
-				 */
-				
+				int i = 0;
+				for (Element e : doc.select("div.StyledComponents__CastItemSummary-y9ygcu-9.fBAofn a")) {
+					i += 1;
+					if ((i % 2) == 1) {
+
+						actors.add(e.text());
+						System.out.println(e.text());
+					}
+
+				}
+				category = doc.select("a.GenresAndPlot__GenreChip-cum89p-3.fzmeux.ipc-chip.ipc-chip--on-baseAlt").text()
+						.split(" ");
+				director = doc.select(
+						"a.ipc-metadata-list-item__list-content-item.ipc-metadata-list-item__list-content-item--link")
+						.first().text();
+				String type;
+				type = doc.select("li.ipc-inline-list__item").first().text();
+				// System.out.println(type);
+				// System.out.println(doc.select("li.ipc-inline-list__item").text());
+
+				try {
+					imdbRating = doc.select("span.AggregateRatingButton__RatingScore-sc-1ll29m0-1.iTLWoV").first()
+							.text();
+				} catch (Exception e) {
+					imdbRating = "-";
+				}
+				String[] str = {};
+				for (Element e : doc.select("div")) {
+					if (e.attr("data-testid").equals("title-details-section")) {
+
+						str = e.text().split(" ");
+
+					}
+				}
+				// for (String ch: str) {System.out.println(ch);}
+				int k = 0;
+				boolean test = false;
+
+				while (k < str.length) {
+					k += 1;
+					if (str[k].contains("Language")) {
+						test = true;
+					} else if (str[k].contains("Also")) {
+						break;
+					} else if (str[k].contains("Filming")) {
+						break;
+					} else if (str[k].contains("Production")) {
+						break;
+					} else if (str[k].contains("See")) {
+						break;
+					} else if (test == true) {
+						languages.add(str[k]);
+					}
+					// else {System.out.println("no languages");}
+
+				}
+
+				for (String j : category) {
+					System.out.println(j);
+				}
+				System.out.println(director);
+				System.out.println(imdbRating);
+				for (String j : languages) {
+					System.out.println(j);
+				}
+
 			}
+
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}
-		
-	
 	}
-	
-
 }
-	

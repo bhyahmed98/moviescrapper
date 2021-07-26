@@ -11,12 +11,15 @@ import org.jsoup.nodes.Element;
 public class PrimewireCrawler {
 
 	private static ArrayList<String> url_list =new ArrayList<String>();
+	private static WebScrap webscrap = new WebScrap();
+	private static TranslateMovie translatemovie=new TranslateMovie();
+	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		System.out.println("Welcome");
-		String url = "https://primewire.es/movie/black-widow-9jl3q";
-
+		String url = "https://primewire.es/movie/dark-web-1rx3w";
 		crawl(1, url, new ArrayList<String>());
+		
 		System.out.println(url_list.size());
 		
 		
@@ -46,6 +49,8 @@ public class PrimewireCrawler {
 			Document doc = con.get();
 			if (con.response().statusCode() == 200) {
 				if (test_url(url)) {
+					
+					System.out.println("----------------------");
 					System.out.println("Link " + url);
 					url_list.add(url);
 					//System.out.println(url_list.size());
@@ -57,7 +62,10 @@ public class PrimewireCrawler {
 						ch+=" ";
 					}
 					String name = ch.substring(0,ch.length()-1);
+
 					System.out.println(name);
+					translatemovie.movieTranslation(name,url);
+
 				
 				}
 				return doc;

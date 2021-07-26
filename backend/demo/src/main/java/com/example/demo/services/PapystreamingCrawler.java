@@ -13,6 +13,7 @@ public class PapystreamingCrawler {
 
 	private static ArrayList<String> url_list = new ArrayList<String>();
 	private static WebScrap webscrap = new WebScrap();
+	private static TranslateMovie translatemovie=new TranslateMovie();
 
 	public static void main(String[] args) {
 
@@ -49,11 +50,14 @@ public class PapystreamingCrawler {
 			Document doc = con.get();
 			if (con.response().statusCode() == 200) {
 				if (test_url(url)) {
-					System.out.println("Link " + url);
+					//System.out.println("Link " + url);
 					String name=url.substring(33,url.length()-1).replace("-", " ");
-					webscrap.scrap(name,url);
+					
+
+					System.out.println("--------------------------------");					
 					System.out.println(name);
-					url_list.add(url);
+					translatemovie.movieTranslation(name,url);
+					//url_list.add(url);
 					//System.out.println(url_list.size());
 				}
 				return doc;

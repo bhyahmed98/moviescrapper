@@ -10,7 +10,8 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 
 public class ChillCrawler {
-
+	
+	private static TranslateMovie translatemovie = new TranslateMovie();
 	private static ArrayList<String> url_list =new ArrayList<String>();
 	private static WebScrap webscrap = new WebScrap();
 
@@ -18,7 +19,7 @@ public class ChillCrawler {
 	public static void main(String[] args) {
 
 		System.out.println("Welcome");
-		String url = "https://123chill.to/";
+		String url = "https://123chill.to/21-bridges-watch-online/";
 
 		crawl(1, url, new ArrayList<String>());
 		//System.out.println(url_list.size());
@@ -50,8 +51,16 @@ public class ChillCrawler {
 				if (test_url(url)) {
 					System.out.println("Link " + url);
 					String name=url.substring(20,url.length()-1).replace("-", " ");
+					name = name.replace("watch", "");
+					name = name.replace("online", "");
+					
+					if ((name.contains("watch"))&&(name.contains("online"))) {
+						name = name.substring(6,name.length()-7);
+					}
+					System.out.println("--------------------------------");	
 					System.out.println(name);
-					webscrap.scrap(name,url);
+					
+					translatemovie.movieTranslation(name,url);
 					
 				}
 				return doc;

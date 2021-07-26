@@ -12,6 +12,9 @@ import org.jsoup.nodes.Element;
 public class MoviestarsCrawler {
 
 	private static ArrayList<String> url_list = new ArrayList<String>();
+	private static WebScrap webscrap = new WebScrap();
+	private static TranslateMovie translatemovie=new TranslateMovie();
+
 
 	public static void main(String[] args) {
 
@@ -54,7 +57,7 @@ public class MoviestarsCrawler {
 					//System.out.println(url_list.size());
 					
 					
-					/*
+					
 					String[] t=url.substring(28).split("-");
 					String ch = "";
 					for (int i=0;i<t.length-1;i++) {
@@ -63,7 +66,9 @@ public class MoviestarsCrawler {
 					}
 					String name = ch.substring(0,ch.length()-1);
 					System.out.println(name);
-					*/
+					translatemovie.movieTranslation(name,url);
+					
+				
 					
 					
 				}
