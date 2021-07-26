@@ -32,5 +32,4 @@ public class AdminService {
 		adminRepository.deleteById(Id);
 	}
 
-	;
 }

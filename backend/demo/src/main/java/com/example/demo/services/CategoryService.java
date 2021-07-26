@@ -28,5 +28,4 @@ public class CategoryService {
 		categoryRepository.deleteById(Id);
 	}
 
-	;
 }
