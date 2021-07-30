@@ -9,20 +9,17 @@ import javax.persistence.MapsId;
 @Entity
 public class favourite {
 
-	
 	@EmbeddedId
 	favouriteKey id;
 
-    @ManyToOne
-    @MapsId("filmId")
-    @JoinColumn(name = "film_id")
-    Film filmRefUserInfoRefFav;
+	@ManyToOne
+	@MapsId("filmId")
+	@JoinColumn(name = "film_id")
+	Film filmRefUserInfoRefFav;
 
-    @ManyToOne
-    @MapsId("userInfoId")
-    @JoinColumn(name = "userInfo_id")
-    UserInfo userInfoRefFilmRefFav;
-
+	@ManyToOne
+	@MapsId("userInfoId")
+	@JoinColumn(name = "userInfo_id")
+	UserInfo userInfoRefFilmRefFav;
 
 }
-

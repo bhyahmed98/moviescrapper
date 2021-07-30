@@ -1,42 +1,24 @@
 package com.example.demo.model;
 
-
-
 import java.util.Set;
-import java.util.Date;
-
 import javax.persistence.Entity;
-import javax.persistence.EntityListeners;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Temporal;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedDate;
-import org.springframework.data.jpa.domain.support.AuditingEntityListener;
-import static javax.persistence.TemporalType.TIMESTAMP;
-
 import lombok.Data;
 
 @Data
-@EntityListeners(AuditingEntityListener.class)
 @Entity
 @Table(name = "userInfo")
+
 public class UserInfo {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_seq")
 	@SequenceGenerator(name = "user_seq", sequenceName = "user_seq")
-	private long idUser;
+	private long id;
 	private String name;
 	private String email;
 	private String password;
@@ -47,5 +29,54 @@ public class UserInfo {
 
 	@OneToMany(mappedBy = "userInfoRefFilmRefFB")
 	Set<feedBack> fb;
+    
+	public UserInfo(long id,String name,String em,String pass,String phn) 
+	{
+		this.id=id;
+		this.name=name;
+		this.email=em;
+		this.password=pass;
+		this.phonenumber=phn;
+	}
 
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public String getPhonenumber() {
+		return phonenumber;
+	}
+
+	public void setPhonenumber(String phonenumber) {
+		this.phonenumber = phonenumber;
+	}
+	
 }
